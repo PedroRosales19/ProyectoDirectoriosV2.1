@@ -88,20 +88,3 @@ frontend/
 └── vite.config.js
 
 
-## ⚙️ Instalación
-
-``bash
-npm install
-▶️ Ejecutar proyecto
-
-Modo desarrollo:
-
-npm run dev
-
-Compilar para producción:
-
-npm run build
-
-Vista previa de producción:
-
-npm run preview
