@@ -1,11 +1,18 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import toast from "react-hot-toast";
+
 import API from "../services/api";
+
 import "../styles/Auth.css";
 
 function Register() {
-  const [nombre, setNombre] = useState("");
-  const [email, setEmail] = useState("");
+  const [nombre, setNombre] =
+    useState("");
+
+  const [email, setEmail] =
+    useState("");
+
   const [password, setPassword] =
     useState("");
 
@@ -13,6 +20,17 @@ function Register() {
 
   const register = async (e) => {
     e.preventDefault();
+
+    if (
+      !nombre ||
+      !email ||
+      !password
+    ) {
+      toast.error(
+        "Completa todos los campos"
+      );
+      return;
+    }
 
     try {
       await API.post(
@@ -24,13 +42,15 @@ function Register() {
         }
       );
 
-      alert(
+      toast.success(
         "Usuario registrado correctamente"
       );
 
       navigate("/");
+
     } catch (error) {
-      alert(
+      toast.error(
+        error.response?.data?.mensaje ||
         "Error al registrar usuario"
       );
     }

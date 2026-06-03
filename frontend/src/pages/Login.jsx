@@ -1,33 +1,53 @@
 import { useState, useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import toast from "react-hot-toast";
+
 import API from "../services/api";
 import { AuthContext } from "../context/AuthContext";
+
 import "../styles/Auth.css";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { login: authLogin } = useContext(AuthContext);
+  const { login: authLogin } =
+    useContext(AuthContext);
 
   const navigate = useNavigate();
-
-
 
   const login = async (e) => {
     e.preventDefault();
 
-    try {
-      const res = await API.post("/auth/login", {
-        email,
-        password,
-      });
+    if (!email || !password) {
+      toast.error(
+        "Completa todos los campos"
+      );
+      return;
+    }
 
-authLogin(res.data.token);
+    try {
+      const res = await API.post(
+        "/auth/login",
+        {
+          email,
+          password,
+        }
+      );
+
+      authLogin(res.data.token);
+
+      toast.success(
+        `Bienvenido ${res.data.usuario.nombre}`
+      );
 
       navigate("/dashboard");
+
     } catch (error) {
-      alert("Credenciales incorrectas");
+      toast.error(
+        error.response?.data?.mensaje ||
+        "Credenciales incorrectas"
+      );
     }
   };
 
