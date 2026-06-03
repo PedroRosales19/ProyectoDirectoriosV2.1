@@ -46,3 +46,62 @@ backend/
 ├── uploads/
 ├── server.js
 └── package.json
+## README.md (Frontend)
+
+# 💻 Frontend - Directorio de Contactos
+
+Aplicación web desarrollada con React y Vite para administrar contactos de manera rápida y segura.
+
+## 📋 Características
+
+- Interfaz moderna y responsiva
+- Registro e inicio de sesión
+- Gestión de contactos
+- Consumo de API REST mediante Axios
+- Navegación con React Router
+- Notificaciones con React Hot Toast
+- Gestión de favoritos y categorías
+
+## 🛠️ Tecnologías
+
+- React 19
+- Vite
+- Axios
+- React Router DOM
+- React Hot Toast
+
+## 📂 Estructura
+
+
+frontend/
+│
+├── public/
+│
+├── src/
+│ ├── components/
+│ ├── pages/
+│ ├── services/
+│ ├── routes/
+│ └── App.jsx
+│
+├── package.json
+└── vite.config.js
+
+
+## ⚙️ Instalación
+
+``bash
+npm install
+▶️ Ejecutar proyecto
+
+Modo desarrollo:
+
+npm run dev
+
+Compilar para producción:
+
+npm run build
+
+Vista previa de producción:
+
+npm run preview
